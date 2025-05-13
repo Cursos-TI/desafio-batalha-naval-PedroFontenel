@@ -22,7 +22,7 @@ int main() {
     }
 
     int navio_horizontal[3] = {3, 3, 3};  
-    int x_h = 2, y_h = 4; //Escolhendo coordenadas iniciais do Navio horizontal 
+    int x_h = 0, y_h = 0; //Escolhendo coordenadas iniciais do Navio horizontal 
 
     // Posicionando navio horizontal no tabuleiro
     for (int i = 0; i < 3; i++) {
@@ -30,36 +30,33 @@ int main() {
     }
 
     int navio_vertical[3] = {3, 3, 3};  
-    int x_v = 1, y_v = 3; //Escolhendo coordenadas iniciais do Navio vertical
+    int x_v = 6, y_v = 8; //Escolhendo coordenadas iniciais do Navio vertical
 
     // Posicionando navio vertical no tabuleiro
     for (int i = 0; i < 3; i++) {
         tabuleiro[x_v + i][y_v] = navio_vertical[i]; // Movendo na vertical
     }
 
-    // Exibindo o tabuleiro
-    printf("**TABULEIRO BATALHA NAVAL**\n");
-    printf("  "); // Espaço para alinhamento
-    
-    // Imprimir os cabeçalhos das colunas
-    for (int j = 0; j < 10; j++) {
-        printf(" %d", coluna[j]);
-    }
-    printf("\n");
-
-    // Imprimir as linhas com os identificadores
-    for (int i = 0; i < 10; i++) {
-        printf("%c ", linha[i]); // Imprimir a letra da linha
-        for (int j = 0; j < 10; j++) {
-            printf(" %d", tabuleiro[i][j]); // Imprimir valores do tabuleiro
-        }
-        printf("\n");
-    }
-
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+
+    int navio_diagonal1[3] = {3, 3, 3};
+    int x_d = 5, y_d = 3; // Escolhendo coordenada inicial para o navio diagonal
+
+    // Posicionando o navio na diagonal
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[x_d + i][y_d + i] = navio_diagonal1[i]; 
+    }
+
+    int navio_diagonal2[3] = {3, 3, 3};
+    int x_d2 = 8, y_d2 = 4; // Escolhendo coordenada inicial para o navio diagonal
+
+    // Posicionando o navio na diagonal
+    for (int i = 0; i < 3; i++) {
+        tabuleiro[x_d2 - i][y_d2 - i] = navio_diagonal2[i];
+    }
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
@@ -81,6 +78,26 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+    
+    // Exibindo o tabuleiro
+    printf("**TABULEIRO BATALHA NAVAL**\n");
+    printf("  "); // Espaço para alinhamento
+    
+    // Imprimir os cabeçalhos das colunas
+    for (int j = 0; j < 10; j++) {
+        printf(" %d", coluna[j]);
+    }
+    
+    printf("\n");
+
+    // Imprimir as linhas com os identificadores
+    for (int i = 0; i < 10; i++) {
+        printf("%c ", linha[i]); // Imprimir a letra da linha
+        for (int j = 0; j < 10; j++) {
+            printf(" %d", tabuleiro[i][j]); // Imprimir valores do tabuleiro
+        }
+        printf("\n");
+    }
 
     return 0;
 }
