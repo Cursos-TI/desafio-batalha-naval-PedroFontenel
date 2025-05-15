@@ -3,6 +3,41 @@
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
+void habilidade_cone(int tabuleiro[10][10], int x, int y) {
+    tabuleiro[x][y] = 1;
+    if (x + 1 < 10) {
+        tabuleiro[x + 1][y - 1] = 1;
+        tabuleiro[x + 1][y] = 1;
+        tabuleiro[x + 1][y + 1] = 1;
+    }
+    if (x + 2 < 10) {
+        tabuleiro[x + 2][y - 2] = 1;
+        tabuleiro[x + 2][y - 1] = 1;
+        tabuleiro[x + 2][y] = 1;
+        tabuleiro[x + 2][y + 1] = 1;
+        tabuleiro[x + 2][y + 2] = 1;
+    }
+}
+
+void habilidade_octaedro(int tabuleiro[10][10], int x, int y) {
+    tabuleiro[x][y] = 1;
+    if (x - 1 >= 0) tabuleiro[x - 1][y] = 1;
+    if (x + 1 < 10) tabuleiro[x + 1][y] = 1;
+    if (y - 1 >= 0) tabuleiro[x][y - 1] = 1;
+    if (y + 1 < 10) tabuleiro[x][y + 1] = 1;
+}
+
+void habilidade_cruz(int tabuleiro[10][10], int x, int y) {
+    if (x >= 0 && x < 10 && y >= 0 && y < 10) tabuleiro[x][y] = 1;
+    
+    // Linhas verticais
+    if (x - 1 >= 0) tabuleiro[x - 1][y] = 1;
+    if (x + 1 < 10) tabuleiro[x + 1][y] = 1;
+    
+    // Linhas horizontais
+    if (y - 1 >= 0) tabuleiro[x][y - 1] = 1;
+    if (y + 1 < 10) tabuleiro[x][y + 1] = 1;
+}
 
 int main() {
     // Nível Novato - Posicionamento dos Navios
@@ -78,6 +113,10 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
+
+    habilidade_cone(tabuleiro, 2, 2);
+    habilidade_octaedro(tabuleiro, 7, 1);
+    habilidade_cruz(tabuleiro, 2, 7);
     
     // Exibindo o tabuleiro
     printf("**TABULEIRO BATALHA NAVAL**\n");
